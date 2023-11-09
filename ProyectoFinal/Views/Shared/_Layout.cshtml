@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AllInOne</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo" style="display: block;">
+                <a asp-action="Index" asp-controller="Home"><img src="~/resources/logo.png" width="40px"></a>
+            </div>
+            <ul class="links">
+                <li><a href="Componentes.html">Componentes</a></li>
+                <li><a href="Computadores.html">Computadores</a></li> 
+                <li><a href="about">Acerca de nosotros</a></li>
+                <li><a href="contact">Contacto</a></li>
+            </ul>
+            <div>
+                <a asp-action="Login" asp-controller="Home" class="action_btn">Iniciar sesión</a>
+                <a asp-action="Create" asp-controller="Usuarios" class="action_btn negative">Registrarse</a>
+            </div>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        <div class="dropdown_menu">
+            <li><a href="Componentes.html">Componentes</a></li>
+            <li><a href="Computadores.html">Computadores</a></li>
+            <li><a href="about">Acerca de nosotros</a></li>
+            <li><a href="contact">Contacto</a></li>
+            <li><button onclick="btnLogIn_Click()" class="action_btn">Iniciar sesión</button></li>
+            <li><button onclick="btnSignIn_Click()" class="action_btn negative">Registrarse</button></li>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <div class="footer_logo">
+                    <img src="~/resources/allInOne.png" />
+            </div>
+        <div     class="footer_content">
+                <p>© Todos los derechos reservados. 2023</p>
+        </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
