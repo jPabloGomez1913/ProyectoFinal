@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AllInOne</title>
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
 </head>
@@ -14,6 +14,16 @@
         <div class="navbar">
             <div class="logo" style="display: block;">
                 <a asp-action="Index" asp-controller="Home"><img src="~/resources/logo.png" width="40px"></a>
+            </div>
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                    Administrar
+                </button>
+                <ul class="dropdown-menu">
+                   <li><a class="dropdown-item" asp-action="Index" asp-controller="Usuarios">Usuarios</a></li>
+                    <li><a class="dropdown-item" asp-action="Index" asp-controller="Categorias">Categorias</a></li>
+                    <li><a class="dropdown-item" asp-action="Index" asp-controller="Articulos">Articulos</a></li>
+                </ul>
             </div>
             <div class="links">
                 <a href="Componentes.html">Componentes</a>
@@ -50,8 +60,8 @@
             <p>© Todos los derechos reservados. 2023</p>
         </div>
     </footer>
-    @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
-    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+     <script src="~/lib/jquery/dist/jquery.min.js"></script> 
+     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> 
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

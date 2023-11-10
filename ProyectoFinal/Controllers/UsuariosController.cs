@@ -21,11 +21,12 @@ namespace ProyectoFinal.Controllers
         }
 
         // GET: Usuarios
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-              return _context.Usuario != null ? 
-                          View(await _context.Usuario.ToListAsync()) :
-                          Problem("Entity set 'ProyectoFinalContext.Usuario'  is null.");
+            /* return _context.Usuario != null ? 
+                         View(await _context.Usuario.ToListAsync()) :
+                         Problem("Entity set 'ProyectoFinalContext.Usuario'  is null."); */
+            return View();
         }
 
         // GET: Usuarios/Details/5
