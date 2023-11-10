@@ -4,6 +4,8 @@ using System.Diagnostics;
 using ProyectoFinal.Models.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal.Data;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Web;
 
 namespace ProyectoFinal.Controllers
 {
@@ -34,7 +36,7 @@ namespace ProyectoFinal.Controllers
                 && u.Email.Equals(userLogin.Email));
             if (usuario != null)
             {
-               
+                TempData["Usuario"] = usuario;
 
 
                 return RedirectToAction("Index", "Usuarios");

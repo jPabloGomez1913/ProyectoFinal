@@ -7,11 +7,11 @@
     font-family: 'Roboto', sans-serif, Verdana, Geneva, Tahoma;
 }
 
-
-
-
-
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
     background-color: #E4F1FF;
 }
 
@@ -55,22 +55,22 @@ header {
     justify-content: space-between;
 }
 
-    .navbar .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 
-    .navbar .links {
-        display: flex;
-        gap: 2rem;
-    }
+.navbar .links {
+    display: flex;
+    gap: 2rem;
+}
 
-    .navbar .toggle_btn {
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        display: none;
-    }
+.navbar .toggle_btn {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
 
 .action_btn {
     background-color: #9400FF;
@@ -82,7 +82,6 @@ header {
     font-size: 0.8rem;
     font-weight: bold;
     cursor: pointer;
-    transition: scale 0.2 ease;
 }
 
 .negative {
@@ -92,7 +91,7 @@ header {
 }
 
 .action_btn:hover {
-    scale: 1.05;
+    transition: ease;
     color: white;
 }
 
@@ -115,22 +114,22 @@ header {
     transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-    .dropdown_menu.open {
-        height: 250px;
-    }
+.dropdown_menu.open {
+    height: 250px;
+}
 
-    .dropdown_menu li {
-        padding: 0.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.dropdown_menu li {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .dropdown_menu .action_btn {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
+.dropdown_menu .action_btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 /* HERO */
 section#hero {
@@ -160,7 +159,7 @@ section {
 .sign_in {
     color: white;
     margin: 50px auto;
-    width: 100%;
+    width: 60%;
     text-align: center;
     align-items: center;
     display: block;
@@ -184,13 +183,13 @@ section {
     width: 60%;
 }
 
-    .form input {
-        border-style: none;
-        padding: 10px;
-        border-radius: 10px;
-        width: 100%;
-        margin-bottom: 20px;
-    }
+.form input {
+    border-style: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
 
 .md_container_img {
     margin: 20px 10px 20px 20px;
@@ -223,10 +222,10 @@ section {
     display: block;
 }
 
-    .btn_container button {
-        margin: 20px 20px;
-        font-size: larger;
-    }
+.btn_container button {
+    margin: 20px 20px;
+    font-size: larger;
+}
 
 #hero h1 {
     font-size: 3rem;
@@ -244,10 +243,10 @@ section {
     align-items: center;
 }
 
-    .main_container p {
-        margin: 30px;
-        font-size: x-large;
-    }
+.main_container p {
+    margin: 30px;
+    font-size: x-large;
+}
 
 .right_container {
     float: right;
@@ -269,26 +268,26 @@ section {
     text-align: center;
 }
 
-    .small_container .md_container {
-        display: block;
-        align-items: center;
-        text-align: center;
-    }
+.small_container .md_container {
+    display: block;
+    align-items: center;
+    text-align: center;
+}
 
-    .small_container img {
-        margin-top: 30px;
-        margin-bottom: 30px;
-        height: 180px;
-    }
+.small_container img {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 180px;
+}
 
-    .small_container .md_container p {
-        margin: 0 10px;
-    }
+.small_container .md_container p {
+    margin: 0 10px;
+}
 
-    .small_container .md_container h3 {
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
+.small_container .md_container h3 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
 
 .filters {
     display: block;
@@ -303,10 +302,10 @@ section {
     display: block;
 }
 
-    .filters h3 {
-        font-weight: bold;
-        margin: 20px auto;
-    }
+.filters h3 {
+    font-weight: bold;
+    margin: 20px auto;
+}
 
 .filter {
     margin: 5px 30px;
@@ -327,33 +326,33 @@ input[type="checkbox"] {
     place-content: center;
 }
 
-    input[type="checkbox"]::before {
-        content: "";
-        width: 0.65em;
-        height: 0.65em;
-        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        transform: scale(0);
-        transform-origin: bottom left;
-        transition: 120ms transform ease-in-out;
-        box-shadow: inset 1em 1em var(--form-control-color);
-        /* Windows High Contrast Mode */
-        background-color: CanvasText;
-    }
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+}
 
-    input[type="checkbox"]:checked::before {
-        transform: scale(1);
-    }
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
 
-    input[type="checkbox"]:focus {
-        outline: max(2px, 0.15em) solid currentColor;
-        outline-offset: max(2px, 0.15em);
-    }
+input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+}
 
-    input[type="checkbox"]:disabled {
-        --form-control-color: var(--form-control-disabled);
-        color: var(--form-control-disabled);
-        cursor: not-allowed;
-    }
+input[type="checkbox"]:disabled {
+    --form-control-color: var(--form-control-disabled);
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+}
 
 .card_container {
     flex-wrap: wrap;
@@ -369,15 +368,18 @@ input[type="checkbox"] {
 }
 
 footer {
+    margin-top: auto;
+    align-items: center;
     width: 100%;
     display: flex;
     background-color: #AED2FF;
     position: relative;
     bottom: 0;
+    justify-content: space-between;
 }
 
 .footer_content {
-    margin: auto 50px auto auto;
+    margin-right: 20px;
     color: black;
 }
 
@@ -387,8 +389,8 @@ footer {
 }
 
 footer img {
-    margin-left: 20px;
     width: 100px;
+    margin-left: 20px;
 }
 /*RESPONSIVE*/
 @media(max-width: 992px) {
