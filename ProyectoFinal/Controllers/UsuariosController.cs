@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal.Data;
 using ProyectoFinal.Models;
-using ProyectoMDSI.Models.ViewModels;
+using ProyectoFinal.Models.ViewModel;
 
 namespace ProyectoFinal.Controllers
 {
@@ -59,20 +59,31 @@ namespace ProyectoFinal.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ViewUsuario usuario)
         {
-            var usuarioBD = _context.Usuario.
-                 FirstOrDefaultAsync(x => x.Documento == usuario.Documento);
-            if (usuarioBD != null)
+            if (UsuarioExists(usuario.Documento))
+            {
+                return NotFound();
+            }
+
+            if (!usuario.Password.Equals(usuario.PasswordConfir)) 
             {
                 return NotFound();
             }
 
 
-            usuario.FechaRegistro = DateTime.Now;
+            
             if (ModelState.IsValid)
             {
+               var usuarioBd =new Usuario {
+                Documento= usuario.Documento,
+                Password = usuario.Password,
+                FechaRegistro= DateTime.Now,
+                Email= usuario.Email,
+                Nombre=usuario.Nombre,
+                Direccion=usuario.Direccion,
+                
+                };
 
-
-                _context.Add(usuario);
+                _context.Add(usuarioBd);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
@@ -167,9 +178,18 @@ namespace ProyectoFinal.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        private bool UsuarioExists(string doc)
+        {
+          return (_context.Usuario?.Any(e => e.Documento.Equals(doc))).GetValueOrDefault();
+        }
+
         private bool UsuarioExists(int id)
         {
-          return (_context.Usuario?.Any(e => e.UsuarioId == id)).GetValueOrDefault();
+            return (_context.Usuario?.Any(e => e.UsuarioId==id)).GetValueOrDefault();
         }
+
+
+
+
     }
 }

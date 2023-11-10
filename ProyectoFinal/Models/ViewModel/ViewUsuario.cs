@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ProyectoMDSI.Models.ViewModels
+namespace ProyectoFinal.Models.ViewModel
 {
     public class ViewUsuario
     {
-        
+
         public int UsuarioId { get; set; }
         [Required]
         [RegularExpression("^[0-9]*$", ErrorMessage = "Número de documento incorrecto")]

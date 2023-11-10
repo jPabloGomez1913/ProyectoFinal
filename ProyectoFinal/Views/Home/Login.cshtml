@@ -1,0 +1,33 @@
+﻿@model ProyectoFinal.Models.ViewModel.ViewUsuarioLogin
+
+
+
+<form asp-action="Login">
+    <main>
+        <div class="sign_in">
+            <div class="form_title">
+                <h1>Iniciar sesión</h1>
+            </div>
+
+            <div >
+                <label asp-for="Documento" class="control-label"></label>
+                <input asp-for="Documento" class="form-control" />
+                <span asp-validation-for="Documento" class="text-danger"></span>
+            </div>
+
+            <div >
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            
+
+            <div class="btn_container">
+                <button type="submit" class="action_btn">Continuar</button>
+                <button onclick="btnIndex_Click()" class="action_btn negative">Volver atrás</button>
+            </div>
+
+        </div>
+    </main>
+</form>

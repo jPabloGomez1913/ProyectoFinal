@@ -1,20 +1,44 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoFinal.Models;
 using System.Diagnostics;
+using ProyectoFinal.Models.ViewModel;
+using Microsoft.EntityFrameworkCore;
+using ProyectoFinal.Data;
 
 namespace ProyectoFinal.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ProyectoFinalContext _context;
+        public HomeController(ILogger<HomeController> logger, ProyectoFinalContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(ViewUsuarioLogin userLogin)
+        {
+            var usuario = _context.Usuario.
+                FirstOrDefault(u => u.Documento == userLogin.Documento 
+                && u.Email.Equals(userLogin.Email));
+            if (usuario != null)
+            {
+               
+
+
+                return RedirectToAction("Index", "Usuarios");
+            }
             return View();
         }
 

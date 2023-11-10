@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="listUser">
     <thead>
         <tr>
             <th>
@@ -63,3 +63,11 @@
 }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#listUser').DataTable(); // Reemplaza 'tuTabla' con el ID de tu tabla
+        });
+    </script>
+}
