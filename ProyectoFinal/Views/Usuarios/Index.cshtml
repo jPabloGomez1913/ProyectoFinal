@@ -18,49 +18,63 @@
     <table class="table table-striped border mt-3">
         <thead>
             <tr>
-                <th>Id Usuario</th>
-                <th>Documento</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Acciones</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Documento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.Raw("Correo")
+                </th>
+                <th>
+                    @Html.Raw("Dirección")
+
+                </th>
+
+                <th>
+                    @Html.Raw("Fecha de registro")
+                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>111111</td>
-                <td>Juan</td>
-                <td>juan@gmail.com</td>
-                <td>
-                    <a class="btn btn-warning" asp-action=""><i class="bi bi-pencil-fill"></i>Editar</a>
-                    <a class="btn btn-secondary" asp-action=""><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                    <a class="btn btn-danger" asp-action=""><i class="bi bi-eraser-fill"></i>Borrar</a>
-                </td>
-            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Documento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
 
-            <tr>
-                <td>2</td>
-                <td>2222222</td>
-                <td>juan</td>
-                <td>juan</td>
-                <td>
-                    <a class="btn btn-warning" asp-action=""><i class="bi bi-pencil-fill"></i>Editar</a>
-                    <a class="btn btn-secondary" asp-action=""><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                    <a class="btn btn-danger" asp-action=""><i class="bi bi-eraser-fill"></i>Borrar</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>3</td>
-                <td>333333</td>
-                <td>jose</td>
-                <td>jose</td>
-                <td>
-                    <a class="btn btn-warning" asp-action=""><i class="bi bi-pencil-fill"></i>Editar</a>
-                    <a class="btn btn-secondary" asp-action=""><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                    <a class="btn btn-danger" asp-action=""><i class="bi bi-eraser-fill"></i>Borrar</a>
-                </td>
-            </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaRegistro)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.UsuarioId">Edit</a>
+                        <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.UsuarioId">Details</a>
+                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.UsuarioId">Delete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
+@section Scripts {
+
+        <script>
+            $(document).ready(function () {
+                alert('@Html.Raw(ViewBag.Mensaje)'); // Usa Html.Raw para evitar problemas de codificación
+
+            });
+        </script>
+
+}

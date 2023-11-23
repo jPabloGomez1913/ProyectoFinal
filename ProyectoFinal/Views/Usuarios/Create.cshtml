@@ -1,4 +1,4 @@
-﻿@model ProyectoFinal.Models.Usuario
+﻿@model ProyectoFinal.Models.ViewModel.ViewUsuario
 
 @{
     ViewData["Title"] = "Create";
@@ -36,11 +36,17 @@
             <input asp-for="Password" type="password" class="form-control" placeholder="Contraseña" />
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
-    </form>
+        <div>
+            <label asp-for="PasswordConfir" class="control-label">Confirmar contraseña</label>
+            <input asp-for="PasswordConfir" type="password" class="form-control" placeholder="Contraseña" />
+            <span asp-validation-for="PasswordConfir" class="text-danger"></span>
+        </div>
+   
     <div class="btn_container">
         <button type="submit" value="Create" class="action_btn">Registrarse</button>
         <button onclick="btnIndex_Click()" class="action_btn negative">Volver atrás</button>
     </div>
+    </form>
 </div>
 <div>
     <a asp-action="Index">Back to List</a>
@@ -50,4 +56,15 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        $(document).ready(function () {
+            alert('@Html.Raw(ViewBag.Mensaje)'); // Usa Html.Raw para evitar problemas de codificación
+            
+        });
+    </script> 
+
 }
+
+
+
+

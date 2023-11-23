@@ -21,11 +21,11 @@ namespace ProyectoFinal.Controllers
         }
 
         // GET: Usuarios
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            /* return _context.Usuario != null ? 
-                         View(await _context.Usuario.ToListAsync()) :
-                         Problem("Entity set 'ProyectoFinalContext.Usuario'  is null."); */
+             return _context.Usuario != null ? 
+                         View( await _context.Usuario.ToListAsync()) :
+                         Problem("Entity set 'ProyectoFinalContext.Usuario'  is null."); 
             return View();
         }
 
@@ -62,12 +62,19 @@ namespace ProyectoFinal.Controllers
         {
             if (UsuarioExists(usuario.Documento))
             {
-                return NotFound();
+                ViewBag.Mensaje = "El documento ya está en uso";
+                return View();
+            }
+            if (CorreoExists(usuario.Email))
+            {
+                ViewBag.Mensaje = "El correo ya está en uso";
+                return View();
             }
 
             if (!usuario.Password.Equals(usuario.PasswordConfir)) 
             {
-                return NotFound();
+                ViewBag.Mensaje = "Las contraseñas no coinciden";
+                return View();
             }
 
 
@@ -187,6 +194,11 @@ namespace ProyectoFinal.Controllers
         private bool UsuarioExists(int id)
         {
             return (_context.Usuario?.Any(e => e.UsuarioId==id)).GetValueOrDefault();
+        }
+
+        private bool CorreoExists(string correo)
+        {
+            return (_context.Usuario?.Any(e => e.Email.Equals(correo))).GetValueOrDefault();
         }
 
 

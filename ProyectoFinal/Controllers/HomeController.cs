@@ -32,15 +32,16 @@ namespace ProyectoFinal.Controllers
         public IActionResult Login(ViewUsuarioLogin userLogin)
         {
             var usuario = _context.Usuario.
-                FirstOrDefault(u => u.Documento == userLogin.Documento 
+                FirstOrDefault(u => u.Password.Equals(userLogin.Password) 
                 && u.Email.Equals(userLogin.Email));
             if (usuario != null)
             {
-                TempData["Usuario"] = usuario;
+                // TempData["Usuario"] = usuario;
 
-
+                ViewBag.Mensaje = "Bienvenido";
                 return RedirectToAction("Index", "Usuarios");
             }
+            ViewBag.Mensaje = "Usuario y/o contraseña incorrecta";
             return View();
         }
 
