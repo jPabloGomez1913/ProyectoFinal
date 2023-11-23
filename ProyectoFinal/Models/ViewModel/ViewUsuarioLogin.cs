@@ -10,7 +10,8 @@ namespace ProyectoFinal.Models.ViewModel
         public string Email { get; set; }
 
         [Required]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "Número de documento incorrecto")]
-        public string Documento { get; set; }
+        [MaxLength(20, ErrorMessage = "La contraseña no puede ser mayor a 20 letras")
+         , MinLength(3, ErrorMessage = "La contraseña debe ser mayor a 3 letras")]
+        public string Password { get; set; }
     }
 }

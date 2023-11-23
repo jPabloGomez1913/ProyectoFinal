@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="~/css/styles.css" rel="stylesheet" />
@@ -15,7 +16,7 @@
             <div class="logo" style="display: block;">
                 <a asp-action="Index" asp-controller="Home"><img src="~/resources/logo.png" width="40px"></a>
             </div>
-            <div class="dropdown">
+           @* <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                     Administrar
                 </button>
@@ -32,6 +33,7 @@
                 <a href="contact">Contacto</a>
             </div>
             <div>
+                <a id="manage"  asp-area="Identity" class="action_btn" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
                 <a asp-action="Login" asp-controller="Home" class="action_btn">Iniciar sesión</a>
                 <a asp-action="Create" asp-controller="Usuarios" class="action_btn negative">Registrarse</a>
             </div>
@@ -46,7 +48,8 @@
             <li><a href="contact">Contacto</a></li>
             <li><button onclick="btnLogIn_Click()" class="action_btn">Iniciar sesión</button></li>
             <li><button onclick="btnSignIn_Click()" class="action_btn negative">Registrarse</button></li>
-        </ul>
+            </ul>*@
+        <partial name="_LoginPartial"/>
     </header>
     <main role="main" class="pb-3">
         @RenderBody()

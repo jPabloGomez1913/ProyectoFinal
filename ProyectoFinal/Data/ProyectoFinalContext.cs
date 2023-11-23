@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ProyectoFinal.Models;
 
 namespace ProyectoFinal.Data
 {
-    public class ProyectoFinalContext : DbContext
+    public class ProyectoFinalContext : IdentityDbContext
     {
         public ProyectoFinalContext (DbContextOptions<ProyectoFinalContext> options)
             : base(options)

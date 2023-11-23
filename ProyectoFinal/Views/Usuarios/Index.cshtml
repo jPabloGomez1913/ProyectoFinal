@@ -1,53 +1,80 @@
 ﻿@model IEnumerable<ProyectoFinal.Models.Usuario>
 
 @{
-    ViewData["Title"] = "Usuarios";
-
+    ViewData["Title"] = "Index";
 }
-<div class="container mt-5">
+
+<div class="container mt-4">
     <div class="row">
         <div class="col-8">
-            <h2 class="text-primary">Lista de Usuarios</h2>
+            <h3 class="text-dark "><strong>Lista de Usuarios</strong></h3>
         </div>
+
         <div class="col-4 text-right">
-            <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Crear Nueva Usuario</a>
+            <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Crear Nuevo Usuario</a>
         </div>
     </div>
 
-    <br />
-    <br />
-    <div>
-        @if (Model.Count() > 0)
-        {
-            <table class="table table-striped border">
+    <table class="table table-striped border mt-3">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Documento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.Raw("Correo")
+                </th>
+                <th>
+                    @Html.Raw("Dirección")
+
+                </th>
+
+                <th>
+                    @Html.Raw("Fecha de registro")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <th>Documento</th>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Direccion</th>
-                    <th>Fecha Registro</th>
-                    <th>Acciones</th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Documento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaRegistro)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.UsuarioId">Edit</a>
+                        <a asp-action="Details" class="btn btn-primary" asp-route-id="@item.UsuarioId">Details</a>
+                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.UsuarioId">Delete</a>
+                    </td>
                 </tr>
-                @foreach (var usuario in Model)
-                {
-                    <tr>
-                        <td>@usuario.Documento</td>
-                        <td>@usuario.Nombre</td>
-                        <td>@usuario.Email</td>
-                        <td>@usuario.Direccion</td>
-                        <td>@usuario.FechaRegistro</td>
-                        <td>
-                            <a class="btn btn-primary text-white" asp-action="Edit" asp-route-id="@usuario.UsuarioId">Editar</a>
-                            <a class="btn btn-primary text-white" asp-action="Details" asp-route-id="@usuario.UsuarioId">Detalle</a>
-                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@usuario.UsuarioId">Borrar</a>
-                        </td>
-                    </tr>
-                }
-            </table>
-        }
-        else
-        {
-            <p>No hay usuarios</p>
-        }
-    </div>
+            }
+        </tbody>
+    </table>
 </div>
+@section Scripts {
+
+        <script>
+            $(document).ready(function () {
+                alert('@Html.Raw(ViewBag.Mensaje)'); // Usa Html.Raw para evitar problemas de codificación
+
+            });
+        </script>
+
+}
