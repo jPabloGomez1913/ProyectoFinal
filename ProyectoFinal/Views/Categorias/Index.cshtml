@@ -4,56 +4,43 @@
     ViewData["Title"] = "Categorias";
 
 }
-<div class="container mt-4">
+<div class="container mt-5">
     <div class="row">
         <div class="col-8">
-            <h3 class="text-dark "><strong>Lista de Categorias</strong></h3>
+            <h2 class="text-primary">Lista de Categorías</h2>
         </div>
-
         <div class="col-4 text-right">
             <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Crear Nueva Categoría</a>
         </div>
     </div>
-           
-            <table class="table table-striped border mt-3">
-                <thead>
+
+    <br />
+    <br />
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre de categoría</th>
+                    <th>Acciones</th>
+                </tr>
+                @foreach (var categoria in Model)
+                {
                     <tr>
-                        <th>Id Categoria</th>
-                        <th>Nombre de categoría</th>
-                        <th>Acciones</th>
+                        <td>@categoria.IdCategoria</td>
+                        <td>@categoria.Nombre</td>
+                        <td>
+                            <a class="btn btn-primary text-white" asp-action="Edit" asp-route-id="@categoria.IdCategoria">Editar</a>
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@categoria.IdCategoria">Borrar</a>
+                        </td>
                     </tr>
-                 </thead>
-                 <tbody>
-                         <tr>
-                              <td>1</td>
-                              <td>Memorias RAM</td>
-                               <td>
-                                     <a class="btn btn-warning" asp-action="Editar" ><i class="bi bi-pencil-fill"></i>Editar</a>
-                                     <a class="btn btn-secondary" asp-action="Detalle"><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                                     <a class="btn btn-danger" asp-action="Borrar" ><i class="bi bi-eraser-fill"></i>Borrar</a>
-                               </td>
-                         </tr>
-
-                            <tr>
-                                <td>2</td>
-                                <td>Procesadores</td>
-                                <td>
-                                    <a class="btn btn-warning" asp-action="Editar"><i class="bi bi-pencil-fill"></i>Editar</a>
-                                    <a class="btn btn-secondary" asp-action="Detalle"><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                                    <a class="btn btn-danger" asp-action="Borrar"><i class="bi bi-eraser-fill"></i>Borrar</a>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td>Discos Duros</td>
-                                <td>
-                                    <a class="btn btn-warning" asp-action="Editar"><i class="bi bi-pencil-fill"></i>Editar</a>
-                                    <a class="btn btn-secondary" asp-action="Detalle"><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                                    <a class="btn btn-danger" asp-action="Borrar"><i class="bi bi-eraser-fill"></i>Borrar</a>
-                                </td>
-                            </tr>
-                  </tbody>
+                }
             </table>
+        }
+        else
+        {
+            <p>No hay categorías</p>
+        }
+    </div>
 </div>
-    

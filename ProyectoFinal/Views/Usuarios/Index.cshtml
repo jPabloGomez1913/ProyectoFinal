@@ -1,66 +1,53 @@
 ﻿@model IEnumerable<ProyectoFinal.Models.Usuario>
 
 @{
-    ViewData["Title"] = "Index";
-}
+    ViewData["Title"] = "Usuarios";
 
-<div class="container mt-4">
+}
+<div class="container mt-5">
     <div class="row">
         <div class="col-8">
-            <h3 class="text-dark "><strong>Lista de Usuarios</strong></h3>
+            <h2 class="text-primary">Lista de Usuarios</h2>
         </div>
-
         <div class="col-4 text-right">
-            <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Crear Nuevo Usuario</a>
+            <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i> Crear Nueva Usuario</a>
         </div>
     </div>
 
-    <table class="table table-striped border mt-3">
-        <thead>
-            <tr>
-                <th>Id Usuario</th>
-                <th>Documento</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>111111</td>
-                <td>Juan</td>
-                <td>juan@gmail.com</td>
-                <td>
-                    <a class="btn btn-warning" asp-action=""><i class="bi bi-pencil-fill"></i>Editar</a>
-                    <a class="btn btn-secondary" asp-action=""><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                    <a class="btn btn-danger" asp-action=""><i class="bi bi-eraser-fill"></i>Borrar</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>2</td>
-                <td>2222222</td>
-                <td>juan</td>
-                <td>juan</td>
-                <td>
-                    <a class="btn btn-warning" asp-action=""><i class="bi bi-pencil-fill"></i>Editar</a>
-                    <a class="btn btn-secondary" asp-action=""><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                    <a class="btn btn-danger" asp-action=""><i class="bi bi-eraser-fill"></i>Borrar</a>
-                </td>
-            </tr>
-
-            <tr>
-                <td>3</td>
-                <td>333333</td>
-                <td>jose</td>
-                <td>jose</td>
-                <td>
-                    <a class="btn btn-warning" asp-action=""><i class="bi bi-pencil-fill"></i>Editar</a>
-                    <a class="btn btn-secondary" asp-action=""><i class="bi bi-info-circle-fill"></i>Detalle</a>
-                    <a class="btn btn-danger" asp-action=""><i class="bi bi-eraser-fill"></i>Borrar</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <br />
+    <br />
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr>
+                    <th>Documento</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Direccion</th>
+                    <th>Fecha Registro</th>
+                    <th>Acciones</th>
+                </tr>
+                @foreach (var usuario in Model)
+                {
+                    <tr>
+                        <td>@usuario.Documento</td>
+                        <td>@usuario.Nombre</td>
+                        <td>@usuario.Email</td>
+                        <td>@usuario.Direccion</td>
+                        <td>@usuario.FechaRegistro</td>
+                        <td>
+                            <a class="btn btn-primary text-white" asp-action="Edit" asp-route-id="@usuario.UsuarioId">Editar</a>
+                            <a class="btn btn-primary text-white" asp-action="Details" asp-route-id="@usuario.UsuarioId">Detalle</a>
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@usuario.UsuarioId">Borrar</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No hay usuarios</p>
+        }
+    </div>
 </div>

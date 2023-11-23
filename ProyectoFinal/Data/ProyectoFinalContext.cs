@@ -15,5 +15,7 @@ namespace ProyectoFinal.Data
         }
 
         public DbSet<ProyectoFinal.Models.Usuario> Usuario { get; set; } = default!;
+        public DbSet<ProyectoFinal.Models.Categoria> Categoria { get; set; } = default!;
+        public DbSet<ProyectoFinal.Models.Articulo> Articulo { get; set; } = default!;
     }
 }

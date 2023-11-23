@@ -1,0 +1,58 @@
+﻿@model ProyectoFinal.Models.ViewModel.ArticuloVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <h3 class="text-center mt-4">Crear un nuevo articulo</h3>
+    <form method="POST" asp-action="Create">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-6 offset-3 mt-4">
+                
+                    <div class="form-group mb-2">
+                        <label asp-for="Articulo.Nombre" class="control-label"></label>
+                        <input asp-for="Articulo.Nombre" class="form-control" placeholder="Ingresa el nombre del articulo" />
+                        <span asp-validation-for="Articulo.Nombre" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label asp-for="Articulo.Referencia" class="control-label"></label>
+                        <input asp-for="Articulo.Referencia" class="form-control" placeholder="Ingresa la referencia del articulo" />
+                        <span asp-validation-for="Articulo.Referencia" class="text-danger"></span>
+                    </div>
+
+                <div class="form-group mb-2">
+                        <label asp-for="Articulo.Descripcion" class="control-label"></label>
+                        <input asp-for="Articulo.Descripcion" class="form-control" placeholder="Ingresa la descripcion del articulo" />
+                        <span asp-validation-for="Articulo.Descripcion" class="text-danger"></span>
+                    </div>
+
+                <div class="form-group mb-2">
+                        <label asp-for="Articulo.Precio" class="control-label"></label>
+                        <input asp-for="Articulo.Precio" class="form-control" placeholder="Ingresa el precio del articulo" />
+                        <span asp-validation-for="Articulo.Precio" class="text-danger"></span>
+                    </div>
+
+                <div class="form-group mb-2">
+                        <label asp-for="Articulo.Categoria" class="control-label"></label>
+                        @Html.DropDownListFor(u => u.Articulo.IdCategoria, Model.ListaCategorias, "--Lista de categorías--",
+                        new {@class = "form-control"})
+                        <span asp-validation-for="Articulo.IdCategoria" class="text-danger"></span>
+                    </div>
+              
+
+                <div class=" row mt-5">
+                    <div class="col-3">
+                        <a class="text-black" asp-action="Index">Volver a lista</a>
+                    </div>
+                    <div class="col-5 offset-4">
+                        <button type="submit" class="btn btn-primary form-control">Crear Articulo</button>
+                        &nbsp;
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>

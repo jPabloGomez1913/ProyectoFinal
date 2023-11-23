@@ -6,6 +6,8 @@ namespace ProyectoFinal.Models
     {
         [Key]
         public int IdCategoria { get; set; }
+
+        [Required(ErrorMessage = "El nombre es obligatorio")]
         public string Nombre { get; set; }
     }
 }
