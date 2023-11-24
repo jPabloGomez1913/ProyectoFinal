@@ -6,17 +6,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AllInOne</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> 
+    
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    @* <header>
         <div class="navbar">
             <div class="logo" style="display: block;">
                 <a asp-action="Index" asp-controller="Home"><img src="~/resources/logo.png" width="40px"></a>
             </div>
-           @* <div class="dropdown">
+            <div class="dropdown">
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                     Administrar
                 </button>
@@ -26,14 +26,14 @@
                     <li><a class="dropdown-item" asp-action="Index" asp-controller="Articulos">Articulos</a></li>
                 </ul>
             </div>
-            <div class="links">
-                <a href="Componentes.html">Componentes</a>
-                <a href="Computadores.html">Computadores</a>
-                <a href="about">Acerca de nosotros</a>
-                <a href="contact">Contacto</a>
-            </div>
+            <ul class="links">
+                <li><a href="Componentes.html">Componentes</a></li>
+                <li><a href="Computadores.html">Computadores</a></li>
+                <li><a href="about">Acerca de nosotros</a></li>
+                <li><a href="contact">Contacto</a></li>
+            </ul>
             <div>
-                <a id="manage"  asp-area="Identity" class="action_btn" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                @* <a id="manage"  asp-area="Identity" class="action_btn" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
                 <a asp-action="Login" asp-controller="Home" class="action_btn">Iniciar sesión</a>
                 <a asp-action="Create" asp-controller="Usuarios" class="action_btn negative">Registrarse</a>
             </div>
@@ -46,11 +46,11 @@
             <li><a href="Computadores.html">Computadores</a></li>
             <li><a href="about">Acerca de nosotros</a></li>
             <li><a href="contact">Contacto</a></li>
-            <li><button onclick="btnLogIn_Click()" class="action_btn">Iniciar sesión</button></li>
-            <li><button onclick="btnSignIn_Click()" class="action_btn negative">Registrarse</button></li>
-            </ul>*@
+            <li><a asp-action="Login" asp-controller="Home" class="action_btn">Iniciar sesión</a></li>
+            <li><a asp-action="Create" asp-controller="Usuarios" class="action_btn negative">Registrarse</a></li>
+        </ul>
+    </header> *@
         <partial name="_LoginPartial"/>
-    </header>
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
