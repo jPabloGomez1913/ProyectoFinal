@@ -1,0 +1,68 @@
+﻿@model ProyectoFinal.Models.Articulo
+
+@{
+    ViewData["Title"] = "Detalle Articulo";
+
+}
+    <div class="container">
+        <div class="md_container_img">
+        <img src="@Model.UrlImagen" width="50%" style="border-radius:5px; border:1px solid #bbb9b9" />
+        </div>
+        <div class="container_product">
+            <div class="product_title">
+            <h1>@Html.DisplayFor(model =>model.Nombre)</h1>
+            <h2>@Html.DisplayFor(model =>model.Precio)</h2>
+            </div>
+            <div style="text-align: center;">
+                <div class="product_description">
+                <p>@Html.DisplayFor(model =>model.Descripcion)</p>
+                <div class="btn_container">
+                    <button href="#" class="action_btn">Comprar ahora</button>
+                    <button asp-action="agregarCarrito" asp-controller="Carrito" class="action_btn negative">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+          
+    <section style="display: block;">
+        <div>
+            <h1 style="margin-bottom: 40px;">Productos relacionados</h1>
+        </div>
+        <div style="display: flex;">
+            <a href="#">
+                <div class="small_container">
+                    <div class="">
+                        <img src="resources/pc_gamer2.png" width="60%">
+                    </div>
+                    <div class="md_container">
+                        <p>Pc Gamer Rgb Ryzen 5 5600g + 16gb +ssd 500 + Monitor 22”</p>
+                        <h3>$2.200.000 COP</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="small_container">
+                    <div class="">
+                        <img src="resources/pc_gmer3.png" width="60%">
+                    </div>
+                    <div class="md_container">
+                        <p>Torre Cpu Gamer Core I5 10400 Gpu 2g Hdmi 1tb 16gb Led 22</p>
+                        <h3>$2.000.000 COP</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="small_container">
+                    <div>
+                        <img src="resources/pc_gamer1.png" width="60%">
+                    </div>
+                    <div class="md_container">
+                        <p>Torre Gamer Rgb Amd Ryzen 5 5600g + 16gb + Ssd 240</p>
+                        <h3>$1.600.000 COP</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        </section>
+    
+   </div>

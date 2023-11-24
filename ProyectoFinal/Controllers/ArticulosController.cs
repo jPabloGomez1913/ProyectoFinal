@@ -26,6 +26,19 @@ namespace ProyectoFinal.Controllers
         }
 
         [HttpGet]
+        public IActionResult Componentes()
+        {
+            return View(_context.Articulo.ToList());
+        }
+
+        [HttpGet]
+        public IActionResult Detalle(int? id)
+        {
+            var art = _context.Articulo.Find(id);
+            return View(art);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
             ArticuloVM artivm = new ArticuloVM();
