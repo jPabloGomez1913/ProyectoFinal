@@ -16,6 +16,10 @@ namespace ProyectoFinal.Models
         [Required(ErrorMessage = "El precio es obligatorio")]
         public double Precio { get; set; }
 
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Imagen")]
+        public string UrlImagen { get; set; }
+
         [ForeignKey("Categoria")]
         public int IdCategoria { get; set; }
         public Categoria Categoria { get; set; }
