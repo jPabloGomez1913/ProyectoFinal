@@ -12,7 +12,7 @@ toggleBtn.onclick = function () {
 }
 
 function btnIndex_Click() {
-    location.href = "Index.html";
+    window.history.back();
 }
 
 $('#budgetSlider').on('input', function () {
