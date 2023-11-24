@@ -152,7 +152,9 @@ section {
     color: black;
 }
 
-
+.containerr {
+    display: flex;
+}
 
 .sign_in {
     color: white;

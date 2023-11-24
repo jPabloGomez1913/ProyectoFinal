@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ProyectoFinal.Data;
 using ProyectoFinal.Models;
 using ProyectoFinal.Models.ViewModel;
+using System.Linq;
 
 namespace ProyectoFinal.Controllers
 {
@@ -28,7 +29,15 @@ namespace ProyectoFinal.Controllers
         [HttpGet]
         public IActionResult Componentes()
         {
-            return View(_context.Articulo.ToList());
+            var articulo = _context.Articulo.Where(a => !a.Categoria.Nombre.Contains("computadores")).ToList();
+            return View(articulo);
+        }
+
+        [HttpGet]
+        public IActionResult Computadores()
+        {
+            var articulo = _context.Articulo.Where(a => a.Categoria.Nombre.Contains("computadores")).ToList();
+            return View(articulo);
         }
 
         [HttpGet]
@@ -92,6 +101,7 @@ namespace ProyectoFinal.Controllers
 
                     _context.Articulo.Add(artiVM.Articulo);
                     await _context.SaveChangesAsync();
+                    TempData["Correcto"] = "Articulo creado exitosamente";
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -138,6 +148,7 @@ namespace ProyectoFinal.Controllers
             {
                 _context.Articulo.Update(artiVM.Articulo);
                 await _context.SaveChangesAsync();
+                TempData["Correcto"] = "Articulo editado exitosamente";
                 return RedirectToAction(nameof(Index));
             }
             return View(artiVM);
@@ -256,14 +267,14 @@ namespace ProyectoFinal.Controllers
            */
 
             var articuloDesdeDb = _context.Articulo.Find(id);
-            string rutaDirectorioPrincipal = _hostingEnvironment.WebRootPath;
+           /* string rutaDirectorioPrincipal = _hostingEnvironment.WebRootPath;
             var rutaImagen = Path.Combine(rutaDirectorioPrincipal, articuloDesdeDb.UrlImagen.TrimStart('\\'));
 
             if (System.IO.File.Exists(rutaImagen))
             {
                 System.IO.File.Delete(rutaImagen);
             }
-
+           */
             if (articuloDesdeDb == null)
             {
                 TempData["Error"] = "Error borrando";

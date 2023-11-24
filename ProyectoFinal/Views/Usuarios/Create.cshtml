@@ -4,6 +4,22 @@
     ViewData["Title"] = "Create";
 }
 
+@if (TempData["Correcto"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @TempData["Correcto"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 <div class="sign_in">
     <div class="form_title">
         <h1>Registro</h1>
@@ -57,8 +73,6 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
     <script>
-        $(document).ready(function () {
-            alert('@Html.Raw(ViewBag.Mensaje)'); // Usa Html.Raw para evitar problemas de codificación
             
         });
     </script> 

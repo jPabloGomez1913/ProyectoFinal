@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,11 +20,11 @@ namespace ProyectoFinal.Controllers
         }
 
         // GET: Usuarios
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-             return _context.Usuario != null ? 
-                         View( await _context.Usuario.ToListAsync()) :
-                         Problem("Entity set 'ProyectoFinalContext.Usuario'  is null."); 
+            return View(await _context.Usuario.ToListAsync());
+                         
         }
 
         // GET: Usuarios/Details/5
@@ -61,18 +60,18 @@ namespace ProyectoFinal.Controllers
         {
             if (UsuarioExists(usuario.Documento))
             {
-                ViewBag.Mensaje = "El documento ya está en uso";
+                TempData["Error"] =  "El documento ya está en uso";
                 return View();
             }
             if (CorreoExists(usuario.Email))
             {
-                ViewBag.Mensaje = "El correo ya está en uso";
+                TempData["Error"] = "El correo ya está en uso";
                 return View();
             }
 
             if (!usuario.Password.Equals(usuario.PasswordConfir)) 
             {
-                ViewBag.Mensaje = "Las contraseñas no coinciden";
+                TempData["Error"] = "Las contraseñas no coinciden";
                 return View();
             }
 
@@ -92,6 +91,7 @@ namespace ProyectoFinal.Controllers
 
                 _context.Add(usuarioBd);
                 await _context.SaveChangesAsync();
+                TempData["Correcto"] = "Usuario creado exitosamente";
                 return RedirectToAction("Index", "Home");
             }
             return View(usuario);
@@ -131,6 +131,7 @@ namespace ProyectoFinal.Controllers
                 {
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
+                    TempData["Correcto"] = "Usuario editado exitosamente";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -182,6 +183,7 @@ namespace ProyectoFinal.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["Correcto"] = "Usuario borrado exitosamente";
             return RedirectToAction(nameof(Index));
         }
 

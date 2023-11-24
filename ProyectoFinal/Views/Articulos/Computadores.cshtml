@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ProyectoFinal.Models.Articulo>
+
+@{
+    ViewData["Title"] = "Computadores";
+
+}
+<div class="row">
+    <div class="col-3">
+        <div class="filters">
+            <h3>Marcas</h3>
+            <div class="filter">
+                <p>HP</p>
+                <input type="checkbox">
+            </div>
+            <div class="filter">
+                <p>Acer</p>
+                <input type="checkbox">
+            </div>
+            <div class="filter">
+                <p>Lenovo</p>
+                <input type="checkbox">
+            </div>
+            <div class="filter">
+                <p>Samsung</p>
+                <input type="checkbox">
+            </div>
+            <h3>Presupuesto</h3>
+            <div>
+                $100000<input id="budgetSlider" type="range" min="10000" max="2000000" onchange="getBudgetBySlider()">$2000000
+            </div>
+            <label id="budget">Mueve la barra para ajustar el presupuesto</label>
+
+        </div>
+    </div>
+
+    @foreach (var articulo in Model)
+    {
+        <div class="col-3">
+            <a class="card" asp-action="Detalle" asp-route-id="@articulo.IdArticulo">
+                <div class="small_container">
+
+                    <img class="card-img-top" src="@articulo.UrlImagen" width="60%">
+
+                    <div class="card-body">
+                        <p>@articulo.Nombre</p>
+                        <h3>$COP @articulo.Precio</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>

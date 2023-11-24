@@ -35,6 +35,7 @@ namespace ProyectoFinal.Controllers
             {
                 _context.Categoria.Add(categoria);
                 await _context.SaveChangesAsync();
+                TempData["Correcto"] = "Categoria creada exitosamente";
                 return RedirectToAction(nameof(Index));
             }
             return View(categoria);
@@ -64,7 +65,8 @@ namespace ProyectoFinal.Controllers
             if (ModelState.IsValid)
             {
                 _context.Categoria.Update(categoria);
-                await _context.SaveChangesAsync();  
+                await _context.SaveChangesAsync();
+                TempData["Correcto"] = "Categoria editada exitosamente";
                 return RedirectToAction(nameof(Index));   
             }
             return View(categoria); 
@@ -100,6 +102,7 @@ namespace ProyectoFinal.Controllers
             //Borrado
             _context.Categoria.Remove(categoria);
             await _context.SaveChangesAsync();
+            TempData["Correcto"] = "Categoria borrada exitosamente";
             return RedirectToAction(nameof(Index));
         }
     }

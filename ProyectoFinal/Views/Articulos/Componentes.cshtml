@@ -41,48 +41,25 @@
                         $100000<input id="budgetSlider" type="range" min="10000" max="2000000" onchange="getBudgetBySlider()">$2000000
                     </div>
                     <label id="budget">Mueve la barra para ajustar el presupuesto</label>
-                    <h3>Marcas</h3>
-                    <div class="filter">
-                        <p>Kingston</p>
-                        <input type="checkbox">
-                    </div>
-                    <div class="filter">
-                        <p>Crucial</p>
-                        <input type="checkbox">
-                    </div>
-                    <div class="filter">
-                        <p>Samsung</p>
-                        <input type="checkbox">
-                    </div>
-                    <div class="filter">
-                        <p>ASUS</p>
-                        <input type="checkbox">
-                    </div>
-                    <div class="filter">
-                        <p>TeamGroup</p>
-                        <input type="checkbox">
-                    </div>
-                    <div class="filter">
-                        <p>Corsair</p>
-                        <input type="checkbox">
-                    </div>
+                   
                 </div>
         </div>
-    
-            @foreach (var articulo in Model)
-            { 
-                        <div class="col-3">
-                                <a class="card" asp-action="Detalle" asp-route-id="@articulo.IdArticulo">
-                                    <div class="small_container">
-                                       
-                                            <img class="card-img-top" src="@articulo.UrlImagen" width="60%">
-                                        
-                                        <div class="card-body">
-                                            <p>@articulo.Nombre”</p>
-                                            <h3>$COP @articulo.Precio</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                        </div>    
-             }
+
+    @foreach (var articulo in Model)
+    {
+        <div class="col-3">
+            <a class="card" asp-action="Detalle" asp-route-id="@articulo.IdArticulo">
+                <div class="small_container">
+
+                    <img class="card-img-top" src="@articulo.UrlImagen" width="60%">
+
+                    <div class="card-body">
+                        <p>@articulo.Nombre</p>
+                        <h3>$COP @articulo.Precio</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
 </div>
+           
